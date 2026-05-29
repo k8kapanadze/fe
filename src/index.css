@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    
+    /* Light Mode Bento Palette (Sleek minimalist slate with pure white backdrop) */
+    --bento-bg: #ffffff;
+    --bento-card: #ffffff;
+    --bento-border: #e2e8f0;
+    --bento-border-hover: #cbd5e1;
+    --bento-text: #0f172a;
+    --bento-text-muted: #64748b;
+    --bento-accent: #0d9488;
+    --bento-accent-bg: #ccfbf1;
+    --bento-glow: rgba(13, 148, 136, 0.15);
+  }
+
+  .dark {
+    /* Dark Mode Bento Palette - Exactly Matching the Bento Design Scheme */
+    --bento-bg: #0A0C10;
+    --bento-card: #161B22;
+    --bento-border: #30363D;
+    --bento-border-hover: #484f58;
+    --bento-text: #e6edf3;
+    --bento-text-muted: #8b949e;
+    --bento-accent: #2dd4bf;
+    --bento-accent-bg: rgba(45, 212, 191, 0.12);
+    --bento-glow: rgba(45, 212, 191, 0.4);
+  }
+
+  body {
+    background-color: var(--bento-bg);
+    color: var(--bento-text);
+    font-family: var(--font-heading);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+  }
+}
+
+/* Custom Bento Styling Utilities */
+.bento-grid-layout {
+  display: grid;
+  gap: 1rem;
+}
+
+.bento-box {
+  background-color: var(--bento-card);
+  border: 1px solid var(--bento-border);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .bento-box {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+.bento-box:hover {
+  border-color: var(--bento-border-hover);
+  transform: translateY(-1px);
+}
+
+.bento-input {
+  width: 100%;
+  background-color: var(--bento-bg);
+  border: 1px solid var(--bento-border);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--bento-text);
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.bento-input:focus {
+  border-color: var(--bento-accent);
+  box-shadow: 0 0 10px var(--bento-glow);
+}
+
+.bento-btn-primary {
+  background-color: var(--bento-accent);
+  color: #0A0C10;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px var(--bento-glow);
+}
+
+.bento-btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.bento-btn-primary:active {
+  transform: translateY(0);
+}
+
+.bento-btn-secondary {
+  background-color: var(--bento-bg);
+  border: 1px solid var(--bento-border);
+  color: var(--bento-text);
+  font-weight: 500;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.bento-btn-secondary:hover {
+  border-color: var(--bento-accent);
+  color: var(--bento-accent);
+}
+
+.bento-title {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--bento-text);
+}
+
+.bento-accent-text {
+  color: var(--bento-accent);
+}
+
+/* Specific Theme-Overriding rules for existing dark selectors */
+.dark .dark\:bg-slate-950,
+.dark .dark\:bg-slate-900 {
+  background-color: var(--bento-card) !important;
+}
+
+.dark .dark\:bg-slate-950\/50,
+.dark .dark\:bg-slate-900\/20,
+.dark .dark\:bg-slate-950\/20 {
+  background-color: rgba(10, 12, 16, 0.4) !important;
+}
+
+.dark .dark\:bg-slate-850 {
+  background-color: #1a202c !important;
+}
+
+.dark .dark\:border-slate-800,
+.dark .dark\:border-slate-850 {
+  border-color: var(--bento-border) !important;
+}
+
+.dark .dark\:text-indigo-400,
+.dark .dark\:text-indigo-500 {
+  color: var(--bento-accent) !important;
+}
+
+.dark .dark\:border-indigo-400,
+.dark .dark\:border-indigo-600 {
+  border-color: var(--bento-accent) !important;
+}
+
+.dark .dark\:bg-indigo-600,
+.dark .dark\:bg-indigo-950\/40,
+.dark .dark\:bg-indigo-500\/10 {
+  background-color: var(--bento-accent-bg) !important;
+  color: var(--bento-accent) !important;
+}
+
+.dark .text-indigo-600 {
+  color: var(--bento-accent) !important;
+}
+
+.dark .bg-indigo-600 {
+  background-color: var(--bento-accent) !important;
+  color: #0A0C10 !important;
+}
+
+.dark .hover\:bg-indigo-500:hover {
+  background-color: var(--bento-accent) !important;
+  filter: brightness(1.1);
+  color: #0A0C10 !important;
+}
+
+/* Animations and transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
